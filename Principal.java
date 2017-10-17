@@ -31,10 +31,10 @@ public class Principal {
         StringBuffer texto = new StringBuffer();
         CartonBingo cb = new CartonBingo();
         cb.imprime(carton);
-        for(int i=99; i>0; i--)
-            if(cb.contiene(carton, i)){
+        for(int i=100; i>0; i--)
+            if(cb.contiene(carton, i-1)){
                 if(texto.length()>0) texto.append(", ");
-                texto.append(i);
+                texto.append(i-1);
             }
         texto.insert(0, "\tNumeros en el carton: ");
         texto.replace(texto.lastIndexOf(","), texto.lastIndexOf(",")+1, " y");
