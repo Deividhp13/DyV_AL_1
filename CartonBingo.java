@@ -33,10 +33,18 @@ public class CartonBingo {
             if (matriz[filaMedio][columnaMedio] == elemento) {
                 resultado = true;
             } else {
-                if(elemento > matriz[filaMedio][columnaMedio] && filaMedio-1 >= filaInicial) busqueda(matriz, filaInicial, filaMedio-1, columnaMedio, columnaMedio, elemento);
-                if(elemento < matriz[filaMedio][columnaMedio] && filaMedio+1 <= filaFinal) busqueda(matriz, filaMedio+1, filaFinal, columnaMedio, columnaMedio, elemento);
-                if(columnaMedio-1 >= columnaInicial) busqueda(matriz, filaInicial, filaFinal, columnaInicial, columnaMedio-1, elemento);
-                if(columnaMedio+1 <= columnaFinal) busqueda(matriz, filaInicial, filaFinal, columnaMedio+1, columnaFinal, elemento);
+                if(elemento > matriz[filaMedio][columnaMedio]){
+                    if(filaMedio-1 >= filaInicial) busqueda(matriz, filaInicial, filaMedio-1, columnaMedio, columnaMedio, elemento);
+                    if(filaMedio-1 >= filaInicial && columnaMedio+1 <= columnaFinal && !resultado) busqueda(matriz, filaInicial, filaMedio-1, columnaMedio+1, columnaFinal, elemento);
+                    if(columnaMedio-1 >= columnaInicial && !resultado) busqueda(matriz, filaInicial, filaFinal, columnaInicial, columnaMedio-1, elemento);
+                }
+                else{
+                    if(filaMedio+1 <= filaFinal) busqueda(matriz, filaMedio+1, filaFinal, columnaMedio, columnaMedio, elemento);
+                    if(columnaMedio-1 >= columnaInicial && filaMedio+1 <= filaFinal && !resultado) busqueda(matriz, filaMedio+1, filaFinal, columnaInicial, columnaMedio-1, elemento);
+                    if(columnaMedio+1 <= columnaFinal && !resultado) busqueda(matriz, filaInicial, filaFinal, columnaMedio+1, columnaFinal, elemento);
+                }
+
+
             }
 
 
